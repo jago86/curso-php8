@@ -9,15 +9,9 @@ require 'Enums/ColorsEnum.php';
 
 $greeting = 'Hola mundo';
 
-$tasks = [
-    new Task('Estudiar PHP'),
-    new Task('Ir al supermercado'),
-    new Task('Hacer ejercicio', true),
-];
+$pdo = dbConnect();
 
-$tasks[0]->setColor(ColorsEnum::BLUE->value);
-$tasks[1]->setColor(ColorsEnum::GREEN->value);
-$tasks[2]->setColor(ColorsEnum::RED->value);
+$tasks = getAllTasks($pdo);
 
 $completedTasks = array_filter($tasks, function ($task) {
     return $task->completed;
