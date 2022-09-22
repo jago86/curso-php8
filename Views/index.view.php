@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <nav>
+        <a href="Controllers/contact.php">Contacto</a>
+        <a href="Controllers/about.php">Nosotros</a>
+        <a href="Controllers/services.php">Servicios</a>
+    </nav>
     <h1><?= $greeting; ?></h1>
 
     <h2>Completas</h2>
@@ -22,7 +27,7 @@
                     <button type="submit">➖</button>
                 </form>
 
-                <form onsubmit="return confirm('¿Estás seguro de eliminar el registro?');"  style="display: inline;" action="delete-task.php" method="POST">
+                <form onsubmit="return confirm('¿Estás seguro de eliminar el registro?');" style="display: inline;" action="delete-task.php" method="POST">
                     <input type="hidden" name="id" value="<?= $task->id ?>">
                     <button type="submit">❌</button>
                 </form>
