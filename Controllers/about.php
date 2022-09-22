@@ -1,3 +1,3 @@
 <?php
 
-require 'about.view.php';
+require 'Views/about.view.php';
