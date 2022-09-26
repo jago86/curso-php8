@@ -1,6 +1,6 @@
 <?php
 
-App::get('database')->create('tasks', [
+Task::create([
     'title' => $_POST['title'],
     'color' => $_POST['color'],
     'completed' => 0,

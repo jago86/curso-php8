@@ -2,6 +2,18 @@
 
 class Model
 {
+    protected $properties = [];
+
+    protected $table;
+
+    public static function create($properties)
+    {
+        $model = new static($properties);
+        $model->save();
+
+        return $model;
+    }
+
     public function buildString()
     {
         $me = new ReflectionClass($this);
@@ -19,14 +31,14 @@ class Model
 
     public function save($name = null)
     {
-        if (is_null($name)) {
-            $me = new ReflectionClass($this);
-            $filename = $me->getName();
-            $name = lcfirst($filename) . ".txt";
+        if (empty($this->table)) {
+            throw new Exception("El nombre de la tabla no ha sido definido.");
         }
 
-        $file = fopen($name, 'w');
-        fwrite($file, $this->buildString());
-        fclose($file);
+        App::get('database')->create($this->table, [
+            'title' => $_POST['title'],
+            'color' => $_POST['color'],
+            'completed' => 0,
+        ]);
     }
 }
