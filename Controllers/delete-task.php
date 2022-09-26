@@ -1,5 +1,5 @@
 <?php
 
-$query->delete('tasks', $_POST['id']);
+App::get('database')->delete('tasks', $_POST['id']);
 
 header('Location: /');

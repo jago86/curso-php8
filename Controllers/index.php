@@ -2,7 +2,7 @@
 
 $greeting = 'Hola mundo';
 
-$tasks = $query->selectAll('tasks', 'Task');
+$tasks = App::get('database')->selectAll('tasks', 'Task');
 
 $completedTasks = array_filter($tasks, function ($task) {
     return $task->completed;
