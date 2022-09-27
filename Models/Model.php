@@ -79,4 +79,13 @@ class Model
 
         return $this;
     }
+
+    public function __get($name)
+    {
+        if (array_key_exists($name, $this->properties)) {
+            return $this->properties[$name];
+        }
+
+        return null;
+    }
 }

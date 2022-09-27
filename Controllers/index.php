@@ -5,11 +5,11 @@ $greeting = 'Hola mundo';
 $tasks = Task::all();
 
 $completedTasks = array_filter($tasks, function ($task) {
-    return $task->properties->completed;
+    return $task->completed;
 });
 
 $pendingTasks = array_filter($tasks, function ($task) {
-    return !$task->properties->completed;
+    return !$task->completed;
 });
 
 require 'Views/index.view.php';

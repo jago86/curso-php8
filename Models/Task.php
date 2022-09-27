@@ -7,8 +7,6 @@ class Task extends Model
 {
     protected $table = 'tasks';
 
-    public $color = 'black';
-
     // public function __construct(
     //     public $title = '',
     //     public $completed = false
