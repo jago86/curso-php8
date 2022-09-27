@@ -1,6 +1,8 @@
 <?php
 
-App::get('database')->update('tasks', $_POST['id'], [
+$task = Task::find($_POST['id']);
+
+$task->update([
     'completed' => $_POST['completed'],
 ]);
 

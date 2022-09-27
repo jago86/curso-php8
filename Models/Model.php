@@ -19,19 +19,32 @@ class Model
         return $model;
     }
 
-    public function buildString()
+    public function update($properties)
     {
-        $me = new ReflectionClass($this);
-        $properties = $me->getProperties();
+        App::get('database')
+            ->update($this->getTable(), $this->properties['id'], $properties);
 
-        $string = "";
-        foreach ($properties as $property) {
-            $propertyName = $property->name;
-            $propertyValue = $this->$propertyName;
-            $string = $string . "{$propertyName}:" . (is_bool($propertyValue) ? var_export($propertyValue, true) : $propertyValue) .  "\n";
-        }
+        $this->setProperties($properties);
 
-        return $string;
+        return $this;
+    }
+
+    public function delete()
+    {
+        App::get('database')
+            ->delete($this->getTable(), $this->properties['id']);
+
+        return $this;
+    }
+
+    public static function find($id)
+    {
+        $model = new static;
+        $properties = App::get('database')
+            ->find($model->getTable(), $id);
+        $model->setProperties($properties);
+
+        return $model;
     }
 
     public function save($name = null)
@@ -43,5 +56,17 @@ class Model
 
         App::get('database')
             ->create($this->table, $this->properties);
+    }
+
+    public function getTable()
+    {
+        return $this->table;
+    }
+
+    public function setProperties($properties)
+    {
+        $this->properties = array_merge($this->properties, $properties);
+
+        return $this;
     }
 }
