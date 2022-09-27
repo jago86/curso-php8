@@ -19,13 +19,13 @@ class QueryBuilder {
         return $query->fetchAll(PDO::FETCH_ASSOC)[0];
     }
 
-    public function selectAll($table, $class)
+    public function selectAll($table)
     {
         $query = $this->pdo->prepare("select * from {$table}");
 
         $query->execute();
 
-        return $query->fetchAll(PDO::FETCH_CLASS, $class);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function create($table, $params)
