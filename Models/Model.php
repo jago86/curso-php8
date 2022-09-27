@@ -6,6 +6,11 @@ class Model
 
     protected $table;
 
+    public function __construct($properties = [])
+    {
+        $this->properties = $properties;
+    }
+
     public static function create($properties)
     {
         $model = new static($properties);
@@ -31,14 +36,12 @@ class Model
 
     public function save($name = null)
     {
+
         if (empty($this->table)) {
-            throw new Exception("El nombre de la tabla no ha sido definido.");
+            throw new Exception("El nombre de la tabla no ha sido definido");
         }
 
-        App::get('database')->create($this->table, [
-            'title' => $_POST['title'],
-            'color' => $_POST['color'],
-            'completed' => 0,
-        ]);
+        App::get('database')
+            ->create($this->table, $this->properties);
     }
 }
