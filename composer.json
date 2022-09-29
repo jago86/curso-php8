@@ -1,0 +1,19 @@
+{
+    "name": "jairo/php8",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Jairo Ushiña",
+            "email": "jago86@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "classmap": [
+            "./"
+        ],
+        "files": [
+            "functions.php"
+        ]
+    }
+}

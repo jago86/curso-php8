@@ -1,13 +1,4 @@
 <?php
-require 'database/Connection.php';
-require 'database/QueryBuilder.php';
-require 'Core/Router.php';
-require 'Core/Request.php';
-require 'Core/App.php';
-require 'Core/Auth.php';
-require 'Models/Task.php';
-require 'Models/User.php';
-require 'functions.php';
 
 App::set('config', require 'config.php');
 
