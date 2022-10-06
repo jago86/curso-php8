@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Models;
+
+use Core\App;
+
 class Model
 {
     protected $properties = [];

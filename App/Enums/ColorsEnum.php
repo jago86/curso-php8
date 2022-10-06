@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Enums;
+
 enum ColorsEnum: string
 {
     case BLUE = '#5203fc';
