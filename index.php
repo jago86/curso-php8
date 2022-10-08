@@ -1,13 +1,30 @@
 <?php
+
+use Artack\Color\Factory;
+use Artack\Color\Color\HSV;
+use Artack\Color\Color\RGB;
 require "vendor/autoload.php";
 require 'Core/bootstrap.php';
-$routes = require('routes.php');
 
-use Core\Request;
-use Core\Router;
+$converter = Factory::createConverter();
+$RGB = new RGB(101, 45, 204);
 
-$url = Request::url();
+$HSV = $converter->convert($RGB, HSV:: class);
 
-$router = new Router;
-$router->register($routes);
-$router->handle($url);
+echo $HSV->getHue() .", " . $HSV->getSaturation(). ", " . $HSV->getValue();
+
+// use PhpUnitsOfMeasure\PhysicalQuantity\Length;
+
+// $height = new Length(1, 'km');
+// echo $height->toUnit('m');
+
+// $routes = require('routes.php');
+
+// use Core\Request;
+// use Core\Router;
+
+// $url = Request::url();
+
+// $router = new Router;
+// $router->register($routes);
+// $router->handle($url);
