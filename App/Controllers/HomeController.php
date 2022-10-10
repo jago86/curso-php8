@@ -10,19 +10,12 @@ class HomeController
     {
         $greeting = 'Hola mundo';
 
-        $tasks = Task::all();
+        $completedTasks = Task::where('completed', true)->get();
+        $pendingTasks = Task::where('completed', false)->get();
 
-        $completedTasks = array_filter($tasks, function ($task) {
-            return $task->completed;
-        });
-
-        $pendingTasks = array_filter($tasks, function ($task) {
-            return !$task->completed;
-        });
 
         return view('index', [
             'greeting' => $greeting,
-            'tasks' => $tasks,
             'completedTasks' => $completedTasks,
             'pendingTasks' => $pendingTasks,
         ]);

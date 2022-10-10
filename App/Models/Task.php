@@ -2,9 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
+
 class Task extends Model
 {
-    protected $table = 'tasks';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'title',
+        'color',
+        'completed',
+    ];
+
+    // protected $table = 'tasks';
 
     // public function __construct(
     //     public $title = '',

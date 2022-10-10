@@ -8,15 +8,15 @@ class Auth
 {
     public static function tryLogin($email, $password)
     {
-        $users = User::findBy(['email' => $email]);
+        $user = User::where('email', $email)->first();
 
-        if (!empty($users) AND password_verify($password, $users[0]->password)) {
+        if (!empty($user) AND password_verify($password, $user->password)) {
 
             static::ensureSessionStarted();
 
-            $_SESSION['email'] = $users[0]->email;
-            $_SESSION['name'] = $users[0]->name;
-            $_SESSION['id'] = $users[0]->id;
+            $_SESSION['email'] = $user->email;
+            $_SESSION['name'] = $user->name;
+            $_SESSION['id'] = $user->id;
 
             return true;
         }

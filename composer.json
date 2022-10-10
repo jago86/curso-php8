@@ -10,7 +10,8 @@
     "require": {
         "php-units-of-measure/php-units-of-measure": "^2.1",
         "artack/color": "^0.6.0",
-        "pecee/simple-router": "4.3.7.2"
+        "pecee/simple-router": "4.3.7.2",
+        "illuminate/database": "^9.34"
     },
     "autoload": {
         "psr-4": {
